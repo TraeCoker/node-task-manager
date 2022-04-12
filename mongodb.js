@@ -1,10 +1,17 @@
 //CRUD
 
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+// const mongodb = require('mongodb')
+// const MongoClient = mongodb.MongoClient
+// const ObjectID = mongodb.ObjectID
+
+const { MongoClient, ObjectID } = require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
+
+const id = new ObjectID()
+console.log(id)
+console.log(id.getTimestamp())
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true}, (error, client) =>{
     if (error){
@@ -14,8 +21,8 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true}, (error, client) =>{
     const db = client.db(databaseName)
 
     // db.collection('users').insertOne({
-    //     name: 'Trae',
-    //     age: 30
+    //     name: 'Vikram',
+    //     age: 36
     // }, (error, result) => {
     //     if (error){
     //         return console.log('Unable to insert user')
@@ -42,27 +49,27 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true}, (error, client) =>{
 
     // })
 
-     db.collection('tasks').insertMany([
-        {
-            description: 'Get After It',
-            completed: true
-        },
-        {
-            description: 'Get That Good Feeling',
-            completed: true
-        },
-        {
-            description: 'Be Complacent',
-            completed: false
-        }
-    ], (error, result) => {
-        if (error) {
-            return console.log('Unable to insert documents!')
-        }
+    //  db.collection('tasks').insertMany([
+    //     {
+    //         description: 'Get After It',
+    //         completed: true
+    //     },
+    //     {
+    //         description: 'Get That Good Feeling',
+    //         completed: true
+    //     },
+    //     {
+    //         description: 'Be Complacent',
+    //         completed: false
+    //     }
+    // ], (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert documents!')
+    //     }
 
-        console.log(result.ops)
+    //     console.log(result.ops)
 
-    })
+    // })
 
 
 })
